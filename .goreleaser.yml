@@ -7,12 +7,16 @@ before:
 builds:
   - id: dev
     dir: "."
-    main: "."
+    main: "./cmd/dev"
     binary: dev
     flags:
       - -trimpath
     ldflags:
       - -s -w
+      - -X github.com/FollowTheProcess/dev/cli.version={{.Version}}
+      - -X github.com/FollowTheProcess/dev/cli.commit={{.Commit}}
+      - -X github.com/FollowTheProcess/dev/cli.buildDate={{.Date}}
+      - -X github.com/FollowTheProcess/dev/cli.builtBy=GoReleaser
     env:
       - CGO_ENABLED=0
       - GOEXPERIMENT=loopvar
