@@ -4,6 +4,7 @@ go 1.21
 
 require (
 	github.com/FollowTheProcess/msg v0.6.1
+	github.com/cli/browser v1.2.0
 	github.com/fatih/color v1.15.0
 	github.com/spf13/cobra v1.7.0
 )
