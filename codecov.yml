@@ -1,0 +1,3 @@
+ignore:
+  - cmd # Nothing in here but main.go which just calls executes the CLI
+  - cli # No logic in here, just CLI command definitions
