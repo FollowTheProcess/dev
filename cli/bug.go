@@ -1,10 +1,12 @@
 package cli
 
 import (
-	"fmt"
-
+	"github.com/FollowTheProcess/msg"
+	"github.com/cli/browser"
 	"github.com/spf13/cobra"
 )
+
+const bugURL = "https://github.com/FollowTheProcess/dev/issues/new/choose"
 
 // buildBugCmd builds and returns the bug subcommand.
 func buildBugCmd() *cobra.Command {
@@ -12,10 +14,11 @@ func buildBugCmd() *cobra.Command {
 		Use:     "bug",
 		Args:    cobra.NoArgs,
 		Short:   "File an issue about dev.",
+		Long:    "The bug command will open your default browser on dev's issue page.",
 		Example: "$ dev bug",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			fmt.Println("bug called")
-			return nil
+			msg.Info("Opening %s in your browser", bugURL)
+			return browser.OpenURL(bugURL)
 		},
 	}
 
