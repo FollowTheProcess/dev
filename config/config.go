@@ -39,7 +39,9 @@ type GitHub struct {
 
 // Load reads toml config from the reader and returns a Config.
 func Load(r io.Reader) (Config, error) {
-	var cfg Config
+	cfg := Config{
+		Directory: "~/Development", // Sensible default
+	}
 	if _, err := toml.NewDecoder(r).Decode(&cfg); err != nil {
 		var parseError toml.ParseError
 		if errors.As(err, &parseError) {
