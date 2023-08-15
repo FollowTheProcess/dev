@@ -21,12 +21,6 @@ open = true
 bin = "code"
 name = "VSCode"
 `
-
-	minimal = `
-directory = "~/somewhere/else"
-`
-
-	bad = `some nonsense [(*&^)]`
 )
 
 func TestLoad(t *testing.T) {
@@ -55,7 +49,7 @@ func TestLoad(t *testing.T) {
 		},
 		{
 			name:    "minimal",
-			input:   minimal,
+			input:   `directory = "~/somewhere/else"`,
 			want:    config.Config{Directory: "~/somewhere/else"},
 			wantErr: false,
 		},
@@ -67,7 +61,7 @@ func TestLoad(t *testing.T) {
 		},
 		{
 			name:    "syntax error",
-			input:   bad,
+			input:   "some nonsense [(*&^)]",
 			want:    config.Config{},
 			wantErr: true,
 		},
@@ -78,10 +72,7 @@ func TestLoad(t *testing.T) {
 			in := strings.NewReader(tt.input)
 			got, err := config.Load(in)
 
-			if (err != nil) != tt.wantErr {
-				t.Fatalf("err = %v, wantErr = %v", err, tt.wantErr)
-			}
-
+			test.ErrIsWanted(t, err, tt.wantErr)
 			test.Diff(t, got, tt.want)
 		})
 	}
