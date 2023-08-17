@@ -2,6 +2,8 @@ github.com/BurntSushi/toml v1.3.2 h1:o7IhLm0Msx3BaB+n3Ag7L8EVlByGnpq14C4YWiu/gL8
 github.com/BurntSushi/toml v1.3.2/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
 github.com/FollowTheProcess/msg v0.6.1 h1:3MjZhxxp8cH1noktnwKUrmvaY4MeWVY7ZlyjFaGTsXQ=
 github.com/FollowTheProcess/msg v0.6.1/go.mod h1:mMA4Q0tbZ6wfDH0X1gJLof2nxZxFzv/V7W1FWb2P8uw=
+github.com/FollowTheProcess/msg v0.7.0 h1:SMlT4BBrihOPksA3UeDd5YwNG1huq0ztDtEysCiBfzk=
+github.com/FollowTheProcess/msg v0.7.0/go.mod h1:HL9SNpRDtQxWCk/6T33EkmYHeSS9QBbcW+b785BDg4w=
 github.com/FollowTheProcess/test v0.3.0 h1:0IPjhGsHxfUQ42MZOagMAwV3cKi5kBbM0rrcCXD+P58=
 github.com/FollowTheProcess/test v0.3.0/go.mod h1:3Igr3r21fH/D3gjOpCx9VboSBQtR3D8oxn9NFP4LkbQ=
 github.com/cli/browser v1.2.0 h1:yvU7e9qf97kZqGFX6n2zJPHsmSObY9ske+iCvKelvXg=
