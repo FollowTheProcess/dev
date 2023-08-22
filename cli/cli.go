@@ -1,7 +1,10 @@
 // Package cli implements dev's command line interface.
 package cli
 
-import "github.com/spf13/cobra"
+import (
+	"github.com/FollowTheProcess/dev/cli/config"
+	"github.com/spf13/cobra"
+)
 
 // These are all set at compile time.
 var (
@@ -27,7 +30,10 @@ func Build() *cobra.Command {
 	cmd.SetVersionTemplate(versionTemplate)
 
 	// Attach the subcommands
-	cmd.AddCommand(buildBugCmd())
+	cmd.AddCommand(
+		buildBugCmd(),
+		config.BuildConfigCmd(),
+	)
 
 	return cmd
 }
