@@ -12,29 +12,29 @@ import (
 // Config encodes dev's currently loaded configuration.
 type Config struct {
 	// Github config
-	GitHub GitHub `toml:"github,omitempty"`
+	GitHub GitHub `toml:"github"`
 	// The absolute path to where user projects are stored
-	Directory string `toml:"directory,omitempty"`
+	Directory string `toml:"directory"`
 	// Editor config
-	Editor Editor `toml:"editor,omitempty"`
+	Editor Editor `toml:"editor"`
 }
 
 // Editor encodes config relating to opening files/projects in the user's editor.
 type Editor struct {
 	// The name of the binary to use e.g. `code`
-	Bin string `toml:"bin,omitempty"`
+	Bin string `toml:"bin"`
 	// Friendly name of the editor to use for printed messages
-	Name string `toml:"name,omitempty"`
+	Name string `toml:"name"`
 	// Whether or not we should attempt to open things at all
-	Open bool `toml:"open,omitempty"`
+	Open bool `toml:"open"`
 }
 
 // GitHub encodes config relating to the user's GitHub credentials/identity.
 type GitHub struct {
 	// The user's GitHub user name
-	Username string `toml:"username,omitempty"`
+	Username string `toml:"username"`
 	// A personal access token with at least repo scope
-	Token string `toml:"token,omitempty"`
+	Token string `toml:"token"`
 }
 
 // Load reads toml config from the reader and returns a Config.
