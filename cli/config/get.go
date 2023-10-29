@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 
+	"github.com/FollowTheProcess/dev/app"
 	"github.com/spf13/cobra"
 )
 
@@ -17,6 +18,7 @@ var getAllowedArgs = []string{
 
 // buildGetmd builds and returns the config get subcommand.
 func buildGetCmd() *cobra.Command {
+	app, err := app.New()
 	cmd := &cobra.Command{
 		Use:       "get KEY",
 		Args:      cobra.MatchAll(cobra.ExactArgs(1), cobra.OnlyValidArgs),
@@ -24,7 +26,11 @@ func buildGetCmd() *cobra.Command {
 		Example:   "$ dev config get github.username",
 		ValidArgs: getAllowedArgs,
 		RunE: func(cmd *cobra.Command, args []string) error {
+			if err != nil {
+				return err
+			}
 			fmt.Printf("config get called with key: %v\n", args[0])
+			fmt.Printf("%+v\n", app.Config())
 			return nil
 		},
 	}
