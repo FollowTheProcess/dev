@@ -13,8 +13,7 @@ import (
 	"github.com/FollowTheProcess/msg"
 )
 
-// onceNew loads config and returns a new App, it is safe to be called multiple times
-// and concurrently and will only execute once.
+// onceNew synchronises the call to app.New, ensuring we only ever set it up once.
 var onceNew = sync.OnceValues(newApp)
 
 // App represents the dev program.
@@ -30,7 +29,14 @@ func (a App) Config() config.Config {
 	return a.cfg
 }
 
-// New loads and returns a new App.
+// New builds and returns a new App.
+//
+// It is safe to call multiple times and concurrently as under the hood
+// it is synchronised by sync.Once, ensuring that the app is only ever constructed
+// once, including reading and parsing the config file.
+//
+// It should be called during building of every dev command and subcommand so each has
+// access to the global state.
 func New() (App, error) {
 	return onceNew()
 }
