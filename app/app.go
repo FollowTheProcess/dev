@@ -13,9 +13,9 @@ import (
 	"github.com/FollowTheProcess/msg"
 )
 
-// New loads config and returns a new App, it is safe to be called multiple times
+// onceNew loads config and returns a new App, it is safe to be called multiple times
 // and concurrently and will only execute once.
-var New = sync.OnceValues(newApp)
+var onceNew = sync.OnceValues(newApp)
 
 // App represents the dev program.
 type App struct {
@@ -28,6 +28,11 @@ type App struct {
 // Config returns the set config.
 func (a App) Config() config.Config {
 	return a.cfg
+}
+
+// New loads and returns a new App.
+func New() (App, error) {
+	return onceNew()
 }
 
 // newApp builds and returns a new app.
