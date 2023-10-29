@@ -10,7 +10,7 @@ import (
 
 const (
 	good = `
-directory = "~/Development"
+directory = "/Users/me/Development"
 
 [github]
 username = "FollowTheProcess"
@@ -38,7 +38,7 @@ func TestLoad(t *testing.T) {
 					Username: "FollowTheProcess",
 					Token:    "notatoken",
 				},
-				Directory: "~/Development",
+				Directory: "/Users/me/Development",
 				Editor: config.Editor{
 					Bin:  "code",
 					Name: "VSCode",
@@ -49,14 +49,14 @@ func TestLoad(t *testing.T) {
 		},
 		{
 			name:    "minimal",
-			input:   `directory = "~/somewhere/else"`,
-			want:    config.Config{Directory: "~/somewhere/else"},
+			input:   `directory = "/Users/me/somewhere/else"`,
+			want:    config.Config{Directory: "/Users/me/somewhere/else"},
 			wantErr: false,
 		},
 		{
 			name:    "empty",
 			input:   "", // Only default should be Directory
-			want:    config.Config{Directory: "~/Development"},
+			want:    config.Config{},
 			wantErr: false,
 		},
 		{
@@ -72,7 +72,7 @@ func TestLoad(t *testing.T) {
 			in := strings.NewReader(tt.input)
 			got, err := config.Load(in)
 
-			test.ErrIsWanted(t, err, tt.wantErr)
+			test.WantErr(t, err, tt.wantErr)
 			test.Diff(t, got, tt.want)
 		})
 	}

@@ -41,7 +41,7 @@ sloc: ## Print lines of code (for fun)
 
 build: ## Compile the project binary
 	mkdir -p ./bin
-	goreleaser build --single-target --skip-before --snapshot --clean --output ./bin/dev
+	goreleaser build --single-target --skip before --snapshot --clean --output ./bin/dev
 
 install: uninstall build ## Install the project on your machine
 	cp ./bin/dev ${GOBIN}
