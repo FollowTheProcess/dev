@@ -50,3 +50,11 @@ func Load(r io.Reader) (Config, error) {
 
 	return cfg, nil
 }
+
+// Show renders pretty output of the config to w.
+func (c Config) Show(w io.Writer) error {
+	if err := toml.NewEncoder(w).Encode(c); err != nil {
+		return fmt.Errorf("could not serialise config: %w", err)
+	}
+	return nil
+}

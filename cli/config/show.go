@@ -1,8 +1,6 @@
 package config
 
 import (
-	"fmt"
-
 	"github.com/FollowTheProcess/dev/app"
 	"github.com/spf13/cobra"
 )
@@ -19,9 +17,7 @@ func buildShowCmd() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			fmt.Println("config show called")
-			fmt.Printf("%+v\n", app.Config())
-			return nil
+			return app.Config().Show(app.Stdout)
 		},
 	}
 
