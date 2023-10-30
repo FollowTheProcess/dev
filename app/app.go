@@ -18,8 +18,8 @@ var onceNew = sync.OnceValues(newApp)
 
 // App represents the dev program.
 type App struct {
-	stdout io.Writer
-	stderr io.Writer
+	Stdout io.Writer
+	Stderr io.Writer
 	cfg    config.Config
 	cfgOk  bool
 }
@@ -45,8 +45,8 @@ func New() (App, error) {
 func newApp() (App, error) {
 	fmt.Println("app.New() called") // So I can feel warm and fuzzy that it only runs once
 	app := App{
-		stdout: os.Stdout,
-		stderr: os.Stderr,
+		Stdout: os.Stdout,
+		Stderr: os.Stderr,
 		cfgOk:  false,
 	}
 
@@ -61,7 +61,7 @@ func newApp() (App, error) {
 		// Here everything is fine apart from the config file which isn't a dealbreaker for
 		// starting the app, so we allow it
 		// TODO: Use a sensible default?
-		msg.Fwarn(app.stdout, "Config file %s missing or cannot be read: %v", cfgFile, err)
+		msg.Fwarn(app.Stdout, "Config file %s missing or cannot be read: %v", cfgFile, err)
 		return app, nil
 	}
 	defer file.Close()
@@ -71,7 +71,7 @@ func newApp() (App, error) {
 		// Here everything is fine apart from the config file which isn't a dealbreaker for
 		// starting the app, so we allow it
 		// TODO: Use a sensible default?
-		msg.Fwarn(app.stdout, "Config file %s cannot be read: %v", cfgFile, err)
+		msg.Fwarn(app.Stdout, "Config file %s cannot be read: %v", cfgFile, err)
 		return app, nil
 	}
 
