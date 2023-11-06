@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/BurntSushi/toml v1.3.2
 	github.com/FollowTheProcess/msg v1.0.0
-	github.com/FollowTheProcess/test v0.5.0
+	github.com/FollowTheProcess/test v0.7.0
 	github.com/cli/browser v1.3.0
 	github.com/fatih/color v1.15.0
 	github.com/spf13/cobra v1.7.0
