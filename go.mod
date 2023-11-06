@@ -8,7 +8,7 @@ require (
 	github.com/FollowTheProcess/test v0.7.0
 	github.com/cli/browser v1.3.0
 	github.com/fatih/color v1.16.0
-	github.com/spf13/cobra v1.7.0
+	github.com/spf13/cobra v1.8.0
 )
 
 require (
