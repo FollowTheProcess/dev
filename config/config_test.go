@@ -1,6 +1,7 @@
 package config_test
 
 import (
+	"bytes"
 	"strings"
 	"testing"
 
@@ -76,4 +77,36 @@ func TestLoad(t *testing.T) {
 			test.Diff(t, got, tt.want)
 		})
 	}
+}
+
+func TestShow(t *testing.T) {
+	cfg := config.Config{
+		GitHub: config.GitHub{
+			Username: "Me",
+			Token:    "sometoken",
+		},
+		Directory: "/Users/me/projects",
+		Editor: config.Editor{
+			Bin:  "code",
+			Name: "VSCode",
+			Open: true,
+		},
+	}
+
+	buf := &bytes.Buffer{}
+	test.Ok(t, cfg.Show(buf), "cfg.Show()")
+
+	want := `
+directory = "/Users/me/projects"
+
+[github]
+  username = "Me"
+  token = "sometoken"
+
+[editor]
+  bin = "code"
+  name = "VSCode"
+  open = true
+`
+	test.Diff(t, strings.TrimSpace(buf.String()), strings.TrimSpace(want))
 }
