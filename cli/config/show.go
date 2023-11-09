@@ -7,13 +7,13 @@ import (
 
 // buildShowCmd builds and returns the config show subcommand.
 func buildShowCmd() *cobra.Command {
-	app, err := app.New()
 	cmd := &cobra.Command{
 		Use:     "show",
 		Args:    cobra.NoArgs,
 		Short:   "Display the current config.",
 		Example: "$ dev config show",
 		RunE: func(cmd *cobra.Command, args []string) error {
+			app, err := app.New()
 			if err != nil {
 				return err
 			}

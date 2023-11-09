@@ -13,7 +13,6 @@ func BuildConfigCmd() *cobra.Command {
 
 	cmd.AddCommand(
 		buildShowCmd(),
-		buildEditCmd(),
 	)
 
 	return cmd

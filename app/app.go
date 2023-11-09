@@ -7,21 +7,18 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"sync"
 
 	"github.com/FollowTheProcess/dev/config"
 	"github.com/FollowTheProcess/msg"
 )
 
-// onceNew synchronises the call to app.New, ensuring we only ever set it up once.
-var onceNew = sync.OnceValues(newApp)
-
 // App represents the dev program.
 type App struct {
-	Stdout io.Writer
-	Stderr io.Writer
-	cfg    config.Config
-	cfgOk  bool
+	Stdout  io.Writer
+	Stderr  io.Writer
+	cfgPath string
+	cfg     config.Config
+	cfgOk   bool
 }
 
 // Config returns the set config.
@@ -31,19 +28,10 @@ func (a App) Config() config.Config {
 
 // New builds and returns a new App.
 //
-// It is safe to call multiple times and concurrently as under the hood
-// it is synchronised by sync.Once, ensuring that the app is only ever constructed
-// once, including reading and parsing the config file.
-//
 // It should be called during building of every dev command and subcommand so each has
 // access to the global state.
 func New() (App, error) {
-	return onceNew()
-}
-
-// newApp builds and returns a new app.
-func newApp() (App, error) {
-	fmt.Println("app.New() called") // So I can feel warm and fuzzy that it only runs once
+	fmt.Println("app.New called")
 	app := App{
 		Stdout: os.Stdout,
 		Stderr: os.Stderr,
@@ -55,6 +43,7 @@ func newApp() (App, error) {
 		return App{}, fmt.Errorf("could not get user home dir: %w", err)
 	}
 	cfgFile := filepath.Join(home, ".dev.toml")
+	app.cfgPath = cfgFile
 
 	file, err := os.Open(cfgFile)
 	if err != nil {
