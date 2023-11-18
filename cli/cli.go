@@ -33,6 +33,7 @@ func Build() *cobra.Command {
 	cmd.AddCommand(
 		buildBugCmd(),
 		config.BuildConfigCmd(),
+		buildCheckoutCmd(),
 	)
 
 	return cmd

@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"runtime/debug"
 
 	"github.com/FollowTheProcess/dev/cli"
 	"github.com/FollowTheProcess/msg"
@@ -10,7 +11,7 @@ import (
 func main() {
 	defer func() {
 		if r := recover(); r != nil {
-			msg.Error("dev panicked, this is a bug!\nCausing error:\t%v", r)
+			msg.Error("dev panicked, this is a bug!\nCausing error:\t%v\nStack:\n%s", r, debug.Stack())
 			os.Exit(1)
 		}
 	}()
