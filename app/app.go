@@ -70,3 +70,9 @@ func New() (App, error) {
 
 	return app, nil
 }
+
+// Checkout implements the checkout command.
+func (a App) Checkout(project string) error {
+	msg.Finfo(a.Stdout, "Checking out %s", project)
+	return nil
+}
