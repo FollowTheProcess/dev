@@ -2,8 +2,8 @@ github.com/BurntSushi/toml v1.3.2 h1:o7IhLm0Msx3BaB+n3Ag7L8EVlByGnpq14C4YWiu/gL8
 github.com/BurntSushi/toml v1.3.2/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
 github.com/FollowTheProcess/msg v1.0.0 h1:ZIvbZ5WKlIoySPZfZfbjLn3nZN/1IWoTdjfJSkQ96NI=
 github.com/FollowTheProcess/msg v1.0.0/go.mod h1:HL9SNpRDtQxWCk/6T33EkmYHeSS9QBbcW+b785BDg4w=
-github.com/FollowTheProcess/test v0.7.0 h1:4DMrnavoTZWb5s7hGfUOJqZTsEPyNatQJrxa6S5Cu3c=
-github.com/FollowTheProcess/test v0.7.0/go.mod h1:9oxZcKkTAgz3bZMiHPtYCytdPcvICS+AAp5mzZzB2oA=
+github.com/FollowTheProcess/test v0.9.0 h1:X7/cqUi6qwbB8Z8PGHI5Hk4RJJF/wRZ+3Mko3QlL/VU=
+github.com/FollowTheProcess/test v0.9.0/go.mod h1:9oxZcKkTAgz3bZMiHPtYCytdPcvICS+AAp5mzZzB2oA=
 github.com/cli/browser v1.3.0 h1:LejqCrpWr+1pRqmEPDGnTZOjsMe7sehifLynZJuqJpo=
 github.com/cli/browser v1.3.0/go.mod h1:HH8s+fOAxjhQoBUAsKuPCbqUuxZDhQ2/aD+SzsEfBTk=
 github.com/cpuguy83/go-md2man/v2 v2.0.3/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
